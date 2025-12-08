@@ -21,6 +21,8 @@ Welcome <%= user %>
     <li><a href="myAuctions.jsp">My Auctions</a></li>
     <li><a href="myBids.jsp">My Bids</a></li>
     <li><a href="alerts.jsp">My Alerts</a></li>
+	<li><a href="askQuestion.jsp">Contact Customer Support</a></li>
+
 </ul>
 
 <%
@@ -31,6 +33,20 @@ if ("admin".equals(role)) {
         <li><a href="createRepForm.jsp">Create Customer Representative</a></li>
         <li><a href="salesReport.jsp">Sales Reports</a></li>
     </ul>
+<%
+}
+%>
+
+<%
+if ("rep".equals(role)) {
+%>
+	<h3>Customer Representative Menu</h3>
+	<ul>
+		<li><a href="repQuestions.jsp">Customer Questions</a></li>
+    	<li><a href="repEditUser.jsp">Manage Users</a></li>
+    	<li><a href="repBids.jsp">Manage Bids</a></li>
+    	<li><a href="repAuctions.jsp">Manage Auctions</a></li>
+	</ul>
 <%
 }
 %>

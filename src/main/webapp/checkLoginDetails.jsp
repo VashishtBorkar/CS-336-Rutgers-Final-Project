@@ -41,15 +41,6 @@
         session.setAttribute("user", username);
         session.setAttribute("role", role);
 
-        // You can branch on role if you want different pages:
-        // if ("admin".equals(role)) {
-        //     response.sendRedirect("adminHome.jsp");
-        // } else if ("rep".equals(role)) {
-        //     response.sendRedirect("repHome.jsp");
-        // } else {
-        //     response.sendRedirect("success.jsp");
-        // }
-
         response.sendRedirect("success.jsp");
     } else {
         out.println("Invalid username or password <a href='index.jsp'>Try again</a>");
