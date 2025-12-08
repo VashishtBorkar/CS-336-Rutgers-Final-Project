@@ -6,7 +6,7 @@ if (session.getAttribute("user") == null) {
 
 String itemType = request.getParameter("itemType");
 if (itemType == null) {
-	itemType = "shirt";
+	itemType = "shirts";
 }
 
 %>
@@ -69,8 +69,13 @@ if (itemType.equals("shirts")) {
 %>
 
 <br><br>
-
-    Minimum Price:
+	
+	Start Price:
+    <input type="number" name="startPrice" step="0.01" required>
+    <br><br>
+    
+    
+    Reserve Price:
     <input type="number" name="minPrice" step="0.01" required>
     <br><br>
     

@@ -90,7 +90,8 @@ java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:m
 String startDate = sdf.format(now);
 
 
-double minPrice = Double.parseDouble(request.getParameter("min_price"));
+double startPrice = Double.parseDouble(request.getParameter("startPrice"));
+double minPrice = Double.parseDouble(request.getParameter("minPrice"));
 double minIncrement = Double.parseDouble(request.getParameter("minIncrement"));
 String endDate = request.getParameter("endDate");
 endDate = endDate.replace("T", " ");
@@ -101,11 +102,10 @@ PreparedStatement psAuction = con.prepareStatement(insertAuction);
 psAuction.setInt(1, itemId);
 psAuction.setString(2, startDate);
 psAuction.setString(3, endDate);
-psAuction.setDouble(4, minIncrement);
+psAuction.setDouble(4, startPrice);
 psAuction.setDouble(5, minIncrement);
 psAuction.setDouble(6, minPrice);
-psAuction.executeUpdate();
-psAuction.close();
+
 
 int rows = psAuction.executeUpdate();
 psAuction.close();
