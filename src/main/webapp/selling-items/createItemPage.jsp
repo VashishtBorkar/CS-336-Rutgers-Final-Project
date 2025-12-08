@@ -70,10 +70,17 @@ if (itemType.equals("shirts")) {
 
 <br><br>
 	
+	Item Name:
+    <input type="text" name="itemName" id="itemName" maxlength="100" required>
+    <br><br>
+    
+	<label for="description">Description:</label><br>
+	<textarea id="description" name="description" rows="5" cols="50" placeholder="Enter a description of the item..."></textarea>
+	<br><br>
+	
 	Start Price:
     <input type="number" name="startPrice" step="0.01" required>
     <br><br>
-    
     
     Reserve Price:
     <input type="number" name="minPrice" step="0.01" required>
@@ -93,6 +100,6 @@ if (itemType.equals("shirts")) {
 
 <br>
 
-<a href="success.jsp">Back</a>
+<a href="../success.jsp">Back</a>
 </html>
 

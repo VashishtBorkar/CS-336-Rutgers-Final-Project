@@ -4,7 +4,7 @@
 // check if logged in
 String seller = (String) session.getAttribute("user");
 if (seller == null) {
-    response.sendRedirect("index.jsp");
+    response.sendRedirect("../index.jsp");
     return;
 }
 
@@ -15,7 +15,7 @@ int sellerId = (int) session.getAttribute("id");
 
 // load page again if changed dropdown
 if (finalSubmit == null) {
-    request.getRequestDispatcher("createItem.jsp").forward(request, response);
+    request.getRequestDispatcher("createItemPage.jsp").forward(request, response);
     return;
 }
 
@@ -31,15 +31,18 @@ if (itemType.equals("shirts")) {
 	categoryId = 3;
 }
 
+String itemName = request.getParameter("itemName");
+String itemDesc = request.getParameter("description");
+
 Class.forName("com.mysql.jdbc.Driver");
 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
 
-
-
-String insertItem = "INSERT INTO Item (category_id, seller_id) VALUES (?, ?)";
+String insertItem = "INSERT INTO Item (category_id, seller_id, item_name, item_desc) VALUES (?, ?, ?, ?)";
 PreparedStatement psItem = con.prepareStatement(insertItem, Statement.RETURN_GENERATED_KEYS);
 psItem.setInt(1, categoryId);
 psItem.setInt(2, sellerId);
+psItem.setString(3, itemName);
+psItem.setString(4, itemDesc);
 
 psItem.executeUpdate();
 
@@ -96,15 +99,16 @@ double minIncrement = Double.parseDouble(request.getParameter("minIncrement"));
 String endDate = request.getParameter("endDate");
 endDate = endDate.replace("T", " ");
 
-String insertAuction = "insert into Auction (item_id, start_time, end_time, price, min_increment, min_price) values (?, ?, ?, ?, ?, ?)";
+String insertAuction = "insert into Auction (seller_id, item_id, start_time, end_time, is_active, price, min_increment, min_price) values (?, ?, ?, ?, true, ?, ?, ?)";
 PreparedStatement psAuction = con.prepareStatement(insertAuction);
 
-psAuction.setInt(1, itemId);
-psAuction.setString(2, startDate);
-psAuction.setString(3, endDate);
-psAuction.setDouble(4, startPrice);
-psAuction.setDouble(5, minIncrement);
-psAuction.setDouble(6, minPrice);
+psAuction.setInt(1, sellerId);
+psAuction.setInt(2, itemId);
+psAuction.setString(3, startDate);
+psAuction.setString(4, endDate);
+psAuction.setDouble(5, startPrice);
+psAuction.setDouble(6, minIncrement);
+psAuction.setDouble(7, minPrice);
 
 
 int rows = psAuction.executeUpdate();
@@ -116,7 +120,7 @@ if (rows > 0) {
                        ", start=" + startDate + ", end=" + endDate +
                        ", minPrice=" + minPrice + ", increment=" + minIncrement);
 
-    response.sendRedirect("success.jsp");
+    response.sendRedirect("../success.jsp");
 } else {
     out.println("Failed to create auction.");
 }

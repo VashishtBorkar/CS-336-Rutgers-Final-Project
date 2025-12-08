@@ -20,11 +20,12 @@ Welcome <%=session.getAttribute("user")%>
 <h3>Main Menu</h3>
 
 <ul>
-	<li><a href="createItem.jsp"> Sell Item </a> </li>
-	<li><a href="browse.jsp">Browse Items</a></li>
+
+	<li><a href="selling-items/createItemPage.jsp"> Sell Item </a> </li>
+	<li><a href="browsePage.jsp">Browse Items</a></li>
     <li><a href="myAuctions.jsp">My Auctions</a></li>
     <li><a href="myBids.jsp">My Bids</a></li>
-    <li><a href="alerts.jsp">My Alerts</a></li>
+    <li><a href="alertsPage.jsp">My Alerts</a></li>
 	
 </ul>
 

@@ -11,7 +11,8 @@
 	if (rs.next()) {
 		int userId = rs.getInt("user_id");
 		session.setAttribute("id", userId);
-		session.setAttribute("user", username); 
+		session.setAttribute("user", username);
+		
 		out.println("welcome " + username);
 		out.println("<a href='logout.jsp'>Log out</a>");
 		response.sendRedirect("success.jsp");
