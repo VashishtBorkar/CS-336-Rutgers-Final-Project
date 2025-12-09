@@ -23,6 +23,7 @@ Welcome <%= user %>
     <li><a href="myBidsPage.jsp">My Bids</a></li>
     <li><a href="alertsPage.jsp">My Alerts</a></li>
 	<li><a href="askQuestion.jsp">Contact Customer Support</a></li>
+	<li><a href="browseQuestion.jsp">View Support Questions</a></li>
 
 </ul>
 
