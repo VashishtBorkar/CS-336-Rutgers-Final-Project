@@ -15,7 +15,6 @@ if (answerSubmit != null) {
     Connection con = DriverManager.getConnection(
         "jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
 
-    // look up rep_id from CustomerRepresentative by user_id
     PreparedStatement psRep = con.prepareStatement(
         "SELECT rep_id FROM CustomerRepresentative WHERE rep_id = ?");
     psRep.setInt(1, repUserId);

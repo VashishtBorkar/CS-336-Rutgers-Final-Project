@@ -51,9 +51,6 @@ while (rs.next()) {
     String categoryName = rs.getString("category_name");
     double bidAmount = rs.getDouble("bid_amount");
     String bidTime = rs.getString("bid_time");
-    
-    
-	
 	%>
 	
 	<tr> 
@@ -63,7 +60,6 @@ while (rs.next()) {
 		<td><p> <%= bidAmount %></p></td>
 		<td><p> <%= bidTime %></p></td>
 	</tr>
-	
 	
 	<%
 }

@@ -181,7 +181,5 @@
 			
 		}
 	 
-
-    // 7. Redirect back to item page
     response.sendRedirect("auctionPage.jsp?auctionId=" + auctionId);
 %>

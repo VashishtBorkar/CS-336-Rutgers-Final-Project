@@ -28,7 +28,6 @@ ps.setInt(1, userId);
 ResultSet rs = ps.executeQuery();
 %>
 
-
 <a href="success.jsp">Back</a>
 <h2>My Auctions</h2>
 
@@ -39,16 +38,12 @@ ResultSet rs = ps.executeQuery();
         <th> Category </th>
         <td><p>Start Time</p></td>
     </tr>
-    
-
 <%
-
 while (rs.next()) {
     String itemName = rs.getString("item_name");
     int itemId = rs.getInt("item_id");
     String categoryName = rs.getString("category_name");
     String startTime = rs.getString("start_time");
-	
 	%>
 	
 	<tr> 
@@ -57,12 +52,8 @@ while (rs.next()) {
 		<td><p><%= categoryName %></p> </td>
 		<td><p> <%= startTime %></p></td>
 	</tr>
-	
-	
 	<%
 }
-
-
 con.close();
 %>
 

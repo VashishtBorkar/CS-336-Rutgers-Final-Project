@@ -65,7 +65,7 @@ if(categoryId == 1) { // Shirt
     psShirt.executeUpdate();
     psShirt.close();
 
-} else if(categoryId == 2) { // Add Pants
+} else if(categoryId == 2) { // Pants
     int waist = Integer.parseInt(request.getParameter("waistSize"));
     int length = Integer.parseInt(request.getParameter("length"));
     
@@ -77,7 +77,7 @@ if(categoryId == 1) { // Shirt
     psPants.executeUpdate();
     psPants.close();
 
-} else if(categoryId == 3) { // Add Shoes
+} else if(categoryId == 3) { // Shoes
     int shoeSize = Integer.parseInt(request.getParameter("shoeSize"));
     String sql = "insert into shoes (item_id, size) values (?, ?)";
     PreparedStatement psShoes = con.prepareStatement(sql);
@@ -116,9 +116,7 @@ psAuction.close();
 
 if (rows > 0) {
     out.println("Successfully created auction");
-    System.out.println("Auction inserted: itemId=" + itemId + ", category=" + categoryId + 
-                       ", start=" + startDate + ", end=" + endDate +
-                       ", minPrice=" + minPrice + ", increment=" + minIncrement);
+    System.out.println("Auction inserted: itemId=" + itemId + ", category=" + categoryId + ", start=" + startDate + ", end=" + endDate + ", minPrice=" + minPrice + ", increment=" + minIncrement);
 
     response.sendRedirect("success.jsp");
 } else {

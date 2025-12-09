@@ -16,9 +16,6 @@
     );
 
     try {
-        // ==========================
-        // 1. HANDLE EXPIRED AUCTIONS
-        // ==========================
         StringBuilder expSQL = new StringBuilder();
         expSQL.append("SELECT * FROM auction a ");
         expSQL.append("WHERE a.end_time <= NOW() ");
@@ -59,7 +56,6 @@
                 double highest = topBid.getDouble("bid_amount");
 
                 if (highest >= minPrice) {
-                    // sold: notify winner + seller
                     PreparedStatement alertWinner = con.prepareStatement(
                         "INSERT INTO alerts (user_id, item_id, alert_message, created_at) " +
                         "VALUES (?, ?, ?, NOW())"
@@ -108,11 +104,6 @@
         expRs.close();
         psExp.close();
 
-        // ==========================
-        // 2. LOAD ACTIVE AUCTIONS
-        // ==========================
-
-        // Basic filters from browsePage.jsp
         String itemType = request.getParameter("itemType"); // "all", "shirts", "pants", "shoes"
         String sortBy   = request.getParameter("sortBy");   // price_asc, price_desc, ending_soon
 
@@ -120,13 +111,11 @@
             itemType = "all";
         }
 
-        // Extra filters (you can add corresponding inputs later)
         String shirtSizeFilter = request.getParameter("shirtSizeFilter"); // XS/S/M/L/XL
         String waistFilter     = request.getParameter("waistFilter");     // int
         String lengthFilter    = request.getParameter("lengthFilter");    // int
         String shoeSizeFilter  = request.getParameter("shoeSizeFilter");  // int
 
-        // Map itemType to categoryId (per your Category table)
         int categoryId = 0;
         if ("shirts".equals(itemType)) {
             categoryId = 1;
@@ -135,8 +124,6 @@
         } else if ("shoes".equals(itemType)) {
             categoryId = 3;
         }
-
-        // Build SQL
         StringBuilder sql = new StringBuilder();
         sql.append("SELECT a.auction_id, a.item_id, i.item_name, c.category_name, ");
         sql.append("       a.price, a.end_time ");
@@ -144,7 +131,6 @@
         sql.append("JOIN item i ON a.item_id = i.item_id ");
         sql.append("JOIN category c ON i.category_id = c.category_id ");
 
-        // Category-specific joins if needed for filters
         boolean needShirts = "shirts".equals(itemType) ||
                              (shirtSizeFilter != null && !shirtSizeFilter.isEmpty());
         boolean needPants  = "pants".equals(itemType) ||
@@ -197,7 +183,6 @@
 
         PreparedStatement ps = con.prepareStatement(sql.toString());
 
-        // Bind parameters in the same order we added them
         int paramIndex = 1;
 
         if (!"all".equals(itemType) && categoryId != 0) {
