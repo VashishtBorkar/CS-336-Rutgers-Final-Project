@@ -10,7 +10,7 @@
 
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/buyme_db", "root", "newpassword"
+        "jdbc:mysql://localhost:3306/buyme_db", "root", "Saransh1!"
     );
 
     String sql = 

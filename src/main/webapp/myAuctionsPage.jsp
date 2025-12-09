@@ -10,7 +10,7 @@ if (userId <= 0) {
 
 
 Class.forName("com.mysql.jdbc.Driver");
-Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
 
 
 StringBuilder sql = new StringBuilder("select * from auction a ");

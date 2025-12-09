@@ -35,7 +35,7 @@ String itemName = request.getParameter("itemName");
 String itemDesc = request.getParameter("description");
 
 Class.forName("com.mysql.jdbc.Driver");
-Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
+Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
 
 String insertItem = "INSERT INTO Item (category_id, seller_id, item_name, item_desc) VALUES (?, ?, ?, ?)";
 PreparedStatement psItem = con.prepareStatement(insertItem, Statement.RETURN_GENERATED_KEYS);

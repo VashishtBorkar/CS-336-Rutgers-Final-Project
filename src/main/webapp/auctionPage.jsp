@@ -3,7 +3,7 @@
     int auctionId = Integer.parseInt(request.getParameter("auctionId"));
 
 	Class.forName("com.mysql.jdbc.Driver");
-	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
+	Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
 
     PreparedStatement psAuction = con.prepareStatement(
         "select i.item_id, i.item_name, i.item_desc, c.category_name, " +

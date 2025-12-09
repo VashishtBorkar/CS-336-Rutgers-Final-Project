@@ -13,7 +13,7 @@ if (answerSubmit != null) {
     String answer = request.getParameter("answer");
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
+        "jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
 
     // look up rep_id from CustomerRepresentative by user_id
     PreparedStatement psRep = con.prepareStatement(
@@ -29,7 +29,7 @@ if (answerSubmit != null) {
 
     PreparedStatement ps = con.prepareStatement(
        "UPDATE SupportQuestion " +
-       "SET answer_text = ?, answered_at = NOW(), rep_id = ? " +
+       "SET answer_text = ?, answered_at = NOW(), answered_by = ? " +
        "WHERE question_id = ?");
     ps.setString(1, answer);
     ps.setInt(2, repId);

@@ -7,9 +7,8 @@
 
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/buyme_db", "root", "newpassword");
+        "jdbc:mysql://localhost:3306/buyme_db", "root", "Saransh1!");
     
-    // get parameters
     int auctionId = Integer.parseInt(request.getParameter("auctionId"));
 	
     // current auction data
