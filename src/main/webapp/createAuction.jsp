@@ -120,7 +120,7 @@ if (rows > 0) {
                        ", start=" + startDate + ", end=" + endDate +
                        ", minPrice=" + minPrice + ", increment=" + minIncrement);
 
-    response.sendRedirect("../success.jsp");
+    response.sendRedirect("success.jsp");
 } else {
     out.println("Failed to create auction.");
 }

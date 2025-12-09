@@ -100,6 +100,6 @@ if (itemType.equals("shirts")) {
 
 <br>
 
-<a href="../success.jsp">Back</a>
+<a href="success.jsp">Back</a>
 </html>
 
