@@ -11,7 +11,7 @@ if (submit != null) {
     String question = request.getParameter("question");
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
+        "jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
 
     PreparedStatement ps = con.prepareStatement(
         "INSERT INTO SupportQuestion (user_id, question_text) VALUES (?, ?)");

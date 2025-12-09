@@ -11,7 +11,7 @@
     Connection con = DriverManager.getConnection(
         "jdbc:mysql://localhost:3306/buyme_db",
         "root",
-        "Saransh1!"
+        "newpassword"
     );
 %>
 <html>

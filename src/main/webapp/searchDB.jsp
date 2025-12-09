@@ -108,7 +108,6 @@ if (itemType.equals("shirts")) {
 }
 
 
-
 StringBuilder sql = new StringBuilder("select * from auction a ");
 sql.append("join item i on a.item_id = i.item_id ");
 sql.append("join category c on i.category_id = c.category_id ");
@@ -156,7 +155,6 @@ ResultSet rs = ps.executeQuery();
         <th>View</th>
     </tr>
     
-
 <%
 
 while (rs.next()) {
@@ -167,7 +165,7 @@ while (rs.next()) {
     double price = rs.getDouble("price");
     String endTime = rs.getString("end_time");
 	
-	%>
+%>
 	
 	<tr> 
 		<td><p><%= auctionId %></p></td>

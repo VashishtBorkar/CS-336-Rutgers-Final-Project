@@ -9,7 +9,7 @@ if (role == null || !role.equals("rep")) {
 String action = request.getParameter("action");
 Class.forName("com.mysql.jdbc.Driver");
 Connection con = DriverManager.getConnection(
-    "jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
+    "jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
 
 if ("update".equals(action)) {
     int id = Integer.parseInt(request.getParameter("user_id"));

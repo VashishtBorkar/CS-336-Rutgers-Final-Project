@@ -7,10 +7,11 @@
 
     PreparedStatement psAuction = con.prepareStatement(
         "select i.item_id, i.item_name, i.item_desc, c.category_name, " +
-        "a.price, a.min_increment, a.end_time " +
+        "a.price, a.min_increment, a.end_time, u.username " +
         "from auction a " +
         "join item i on a.item_id = i.item_id " +
         "join category c on i.category_id = c.category_id " +
+        "join user u on u.user_id = a.seller_id " +
         "where a.auction_id = ?"
     );
     
@@ -28,23 +29,35 @@
 <p><strong>Description:</strong><%= auctionRs.getString("item_desc") %></p>
 <p><strong>Current Price:</strong> $<%= auctionRs.getDouble("price") %></p>
 <p><strong>Minimum Increment:</strong> $<%= auctionRs.getDouble("min_increment") %></p>
+<p><strong>Seller Name:</strong> <%= auctionRs.getString("username") %></p>
 <p><strong>Auction Ends:</strong> <%= auctionRs.getTimestamp("end_time") %></p>
 
 <hr>
 
 
-<h2>Place a New Bid</h2>
+<h2>Place a Manual Bid</h2>
 <form action="placeBid.jsp" method="post">
     <input type="hidden" name="auctionId" value="<%= auctionId %>">
+    <input type="hidden" name="bidType" value="manual">
     
 	<label>Bid:</label>
     <input type="number" name="bidAmount" step="0.01" required>
+    
+    <button type="submit">Submit Bid</button>
+</form>
+
+<hr>
+
+<h2>Place an Automatic Bid</h2>
+<form action="placeBid.jsp" method="post">
+    <input type="hidden" name="auctionId" value="<%= auctionId %>">
+    <input type="hidden" name="bidType" value="auto">
     
     <label>Your Max Bid Amount:</label>
     <input type="number" name="maxBid" step="0.01" required>
     
 
-    <button type="submit">Submit Bid</button>
+    <button type="submit"> Set </button>
 </form>
 
 <hr>
@@ -64,7 +77,7 @@
         "from bid b " +
         "join user u on b.bidder_id = u.user_id " +
         "where b.auction_id = ? " +
-        "order by b.bid_time DESC"
+        "order by b.bid_time DESC, b.bid_amount DESC"
     );
 
     psHistory.setInt(1, auctionId);

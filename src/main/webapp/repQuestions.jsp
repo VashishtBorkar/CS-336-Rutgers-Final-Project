@@ -13,7 +13,7 @@ if (answerSubmit != null) {
     String answer = request.getParameter("answer");
     Class.forName("com.mysql.jdbc.Driver");
     Connection con = DriverManager.getConnection(
-        "jdbc:mysql://localhost:3306/buyme_db","root","Saransh1!");
+        "jdbc:mysql://localhost:3306/buyme_db","root","newpassword");
 
     // look up rep_id from CustomerRepresentative by user_id
     PreparedStatement psRep = con.prepareStatement(

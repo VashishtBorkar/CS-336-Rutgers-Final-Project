@@ -19,8 +19,8 @@ Welcome <%= user %>
 
     <li><a href="createItemPage.jsp">Sell Item</a></li>
     <li><a href="browsePage.jsp">Browse Items</a></li>
-    <li><a href="myAuctions.jsp">My Auctions</a></li>
-    <li><a href="myBids.jsp">My Bids</a></li>
+    <li><a href="myAuctionsPage.jsp">My Auctions</a></li>
+    <li><a href="myBidsPage.jsp">My Bids</a></li>
     <li><a href="alertsPage.jsp">My Alerts</a></li>
 	<li><a href="askQuestion.jsp">Contact Customer Support</a></li>
 
